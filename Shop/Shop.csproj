@@ -6,11 +6,51 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\00000000000000_CreateIdentitySchema.cs" />
+    <Compile Remove="Data\Migrations\00000000000000_CreateIdentitySchema.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201124170447_initial.cs" />
+    <Compile Remove="Data\Migrations\20201124170447_initial.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201124170630_initial.cs" />
+    <Compile Remove="Data\Migrations\20201124170630_initial.Designer.cs" />
+    <Compile Remove="Migrations\20201124170855_identitymodel.cs" />
+    <Compile Remove="Migrations\20201124170855_identitymodel.Designer.cs" />
+    <Compile Remove="Migrations\20201124175106_product.cs" />
+    <Compile Remove="Migrations\20201124175106_product.Designer.cs" />
+    <Compile Remove="Migrations\20201124180108_identitymodel.cs" />
+    <Compile Remove="Migrations\20201124180108_identitymodel.Designer.cs" />
+    <Compile Remove="Migrations\20201124180152_product.cs" />
+    <Compile Remove="Migrations\20201124180152_product.Designer.cs" />
+    <Compile Remove="Migrations\20201124183049_product.cs" />
+    <Compile Remove="Migrations\20201124183049_product.Designer.cs" />
+    <Compile Remove="Migrations\20201124195532_product.cs" />
+    <Compile Remove="Migrations\20201124195532_product.Designer.cs" />
+    <Compile Remove="Migrations\20201124210222_product.cs" />
+    <Compile Remove="Migrations\20201124210222_product.Designer.cs" />
+    <Compile Remove="Migrations\20201124212641_init.cs" />
+    <Compile Remove="Migrations\20201124212641_init.Designer.cs" />
+    <Compile Remove="Migrations\20201124212910_init.cs" />
+    <Compile Remove="Migrations\20201124212910_init.Designer.cs" />
+    <Compile Remove="Migrations\20201124213013_product.cs" />
+    <Compile Remove="Migrations\20201124213013_product.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 
 </Project>
