@@ -103,10 +103,10 @@ body {
 }
 .FullDescription {
     
-    text-decoration: wavy;
+    text-decoration: solid;
 }
 .price {
     font-size: 120%;
     text-decoration: underline overline;
-    text-decoration-style: wavy;
+    text-decoration-style: dotted;
 }

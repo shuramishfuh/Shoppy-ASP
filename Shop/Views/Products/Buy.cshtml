@@ -30,10 +30,13 @@
                 <br />
                 <div class="price" >
                    Price:  @Model.Price
-                </div> <br />
+                </div> <br />   
+                       <div class="">
+                           <b>Note</b>: Delivery Charges will be Charge   <b>SAR 11</b> 
+                       </div> <br />
                 
                 <div col-lg-5 col-sm-5 col-md-5  >
-                    <form asp-action="Create" >
+                    <form asp-action="Details" >
                         <div class="form-group">
                             <input placeholder="Name" class="form-control" />
                         </div>
@@ -58,8 +61,14 @@
 
 
                         <div class="form-group">
-                            <input type="submit" value="Create" class="btn btn-primary" />
+                            <div class="mr-3">
+                                <input type="button" value="Buy Now" class="btn btn-primary  " />
+
+                                <input type="button" value="Whatsapp" class="btn btn-success fa fa-whatsapp" />
+
+                            </div>
                         </div>
+
                     </form>
                 </div>
                 

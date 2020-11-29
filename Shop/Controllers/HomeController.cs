@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Shop.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Shop.Controllers
 {
@@ -13,12 +14,12 @@ namespace Shop.Controllers
         {
             Logger1 = logger;
         }
-
+        [Authorize]
         public IActionResult Index()
         {
             return View();
         }
-
+        [Authorize]
        public IActionResult Privacy()
         {
             return View();
