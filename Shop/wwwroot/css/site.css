@@ -1,9 +1,9 @@
 ﻿/*Footer*/
 
 body {
-    background: #ff5f6d;
-    background: -webkit-linear-gradient(to right, #ff5f6d, #ffc371);
-    background: linear-gradient(to right, #ff5f6d, #ffc371);
+    background: aqua;
+    background: -webkit-linear-gradient(to right, aqua, lemonchiffon);
+    background: linear-gradient(to right, aqua, #ffc371);
     min-height: 100vh;
 }
 
@@ -108,5 +108,5 @@ body {
 .price {
     font-size: 120%;
     text-decoration: underline overline;
-    text-decoration-style: dotted;
+    text-decoration-style: solid;
 }
