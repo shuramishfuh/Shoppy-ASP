@@ -1,0 +1,77 @@
+﻿@model Shop.Models.Product
+
+@{
+    ViewData["Title"] = "Buy";
+}
+
+<h1>Buy</h1>
+
+<div class="container" >
+    <div class="row">
+        <div class="col-lg-6 col-sm-6 col-md-6">
+            <img src="~/@Model.ImagePath"/>
+        </div>
+   
+        
+            <div class="col-lg-6 col-sm-6 col-md-6"  >
+                <div class="text-uppercase Brief_Description" >
+                    <b> @Model.BriefDescription </b>
+                </div>
+                <div class="code">
+                   <br/>
+                        Code<b>: @Model.Code</b> <br />
+
+                        Brand <b>: @Model.Brand</b>
+                    <div class="text-success"> Available in  Stuck</div> <br/>
+                </div>
+                <div >
+                    @Model.FullDescription
+                </div>
+                <br />
+                <div class="price" >
+                   Price:  @Model.Price
+                </div> <br />
+                
+                <div col-lg-5 col-sm-5 col-md-5  >
+                    <form asp-action="Create" >
+                        <div class="form-group">
+                            <input placeholder="Name" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <input placeholder="Company Name" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <input placeholder="Mobile Number" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Address(House Number/Street Name/Nearest Landmark)" class="form-control"></textarea>
+                            <span asp-validation-for="FullDescription" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input placeholder="City" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <input placeholder="SARID Number" class="form-control" />
+                        </div>
+
+                     
+
+
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+                
+
+            </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<style type="text/css">
+    
+</style>

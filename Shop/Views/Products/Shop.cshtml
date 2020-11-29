@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Shop.Models.Product>
+
+@{
+    ViewData["Title"] = "Shop";
+
+}
+
+
+<div class="row px-5 pt-5">
+
+    @foreach (var item in Model)
+    {
+        
+        <div class="col-md-4 mt-4 mt-sm-0 card-container">
+            <div class="card text-center product p-4 pt-5 border-0 h-100 rounded-0">
+                <img class="img-fluid d-block mx-auto rounded " width="200" height="200" src="~/@item.ImagePath" alt="~/Images/notAvai.jpg" >
+                <div class="card-body  py-0 h-xs-440p">
+                    <h5 class="card-title font-weight-semi-bold mb-3 w-xl-220p mx-auto">@item.Name</h5>
+                    <br />
+                    <h7 class="BriefDescription text-center card-text">@item.BriefDescription</h7> <br />
+                    <h7 class="text-left"><b>Brand</b>: @item.Brand</h7>
+                    <hr />
+                    <p class="text-success btn text-justify"><b>Price</b>: SAR @item.Price</p> <br/>
+                </div>
+                <p class="btn w-100 px-4 mx-auto">
+                    <a asp-action="Buy" asp-route-id="@item.ProductId">
+                        <input type="submit" class="btn btn-dark btn-lg w-100" id="BuyBotton" data-target="" value="Buy Now"> @*#extraLargeModal*@
+                    </a>
+                </p> 
+            </div>
+        </div>
+    }
+</div>
+
+
+@*modal*@
+
+@*<div id="extraLargeModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">hhh</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Add the <code>.modal-xl</code> class on <code>.modal-dialog</code> to create this extra large modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+

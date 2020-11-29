@@ -1,21 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Shop.Models;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Shop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        public ILogger<HomeController> Logger1 { get; }
 
         public HomeController(ILogger<HomeController> logger)
         {
-            _logger = logger;
+            Logger1 = logger;
         }
 
         public IActionResult Index()
@@ -23,7 +19,7 @@ namespace Shop.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+       public IActionResult Privacy()
         {
             return View();
         }

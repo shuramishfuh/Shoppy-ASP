@@ -1,6 +1,31 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿/*Footer*/
 
+body {
+    background: #ff5f6d;
+    background: -webkit-linear-gradient(to right, #ff5f6d, #ffc371);
+    background: linear-gradient(to right, #ff5f6d, #ffc371);
+    min-height: 100vh;
+}
+
+#button-addon1 {
+    color: #ffc371;
+}
+
+i {
+    color: #ffc371;
+}
+
+.form-control::placeholder {
+    font-size: 0.95rem;
+    color: #aaa;
+    font-style: italic;
+}
+
+.form-control.shadow-0:focus {
+    box-shadow: none;
+}
+
+/*Product*/
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -68,4 +93,20 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+.Brief_Description {
+    text-decoration-style: solid;
+    font-size: 150%;
+}
+.code {
+    font-size: 100%;
+}
+.FullDescription {
+    
+    text-decoration: wavy;
+}
+.price {
+    font-size: 120%;
+    text-decoration: underline overline;
+    text-decoration-style: wavy;
 }

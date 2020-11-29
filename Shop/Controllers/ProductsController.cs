@@ -27,6 +27,30 @@ namespace Shop.Controllers
             return View(await _context.Products.ToListAsync());
         }
 
+        // Get: All  shop page
+        public async Task<IActionResult> Shop()
+        {
+
+            return View(await _context.Products.ToListAsync());
+        }
+         // buy product
+        public async Task<IActionResult> Buy(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.Products
+                .FirstOrDefaultAsync(m => m.ProductId == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
+
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -61,7 +85,7 @@ namespace Shop.Controllers
         {
             if (!ModelState.IsValid) return View(product);
 
-            var path = Path.Combine(this._env.WebRootPath, "Images");
+            var path = Path.Combine(_env.WebRootPath, "Images");
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
@@ -74,7 +98,7 @@ namespace Shop.Controllers
                 await product.ImageFile.CopyToAsync(stream);
             }
 
-            product.ImagePath =  string.Concat("Images/",myUniqueFileName);
+            product.ImagePath =  string.Concat("Images\\",myUniqueFileName);
             _context.Add(product);
             await _context.SaveChangesAsync();
             ModelState.Clear();
@@ -208,6 +232,20 @@ namespace Shop.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var product = await _context.Products.FindAsync(id);
+            var wwwPath = this._env.WebRootPath;
+
+            var path = Path.Combine(this._env.WebRootPath, "Images");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            var de = string.Concat(wwwPath,"\\", product.ImagePath);
+            if (!System.IO.File.Exists(de))
+            {
+                return NotFound("File not found");
+                      
+            }
+            System.IO.File.Delete(de);
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
