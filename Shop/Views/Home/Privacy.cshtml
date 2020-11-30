@@ -1,6 +1,54 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+
+<div class="container">
+    <div class="row alert-heading text-center">
+        <div class="col-2"></div>
+        <div class="col-6  code">
+            <h2> Contact us</h2>
+        </div>
+    </div>
+    <div class="row pt-4 ">
+        <div class="col-2"></div>
+        <div class="col-8  pl-4  ">
+            We check our emails on an hourly basis. Use the form below to send us an email. Please don’t use the form below to place orders. You can place order via WhatsApp directly on the particular product page or the BUY NOW button on the product page.
+            Contact us here for issues on Refunds, Replacement or Complains
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-3 col-sm-12 col-lg-3 ">
+            <img src="~/Images/thanks.jpg" class="img-fluid " width="100%" height="100%" alt="Alternate Text" />
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" aria-describedby="Name" placeholder="Name" name="Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-control" placeholder="WhatsApp Number"name="Wnumber" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email" name="Email" required>
+                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Subject" name="Subject" required>
+                </div>
+
+                <div class="form-group">
+                    <textarea type="text" class="form-control" rows="4" placeholder="Message" name="Message" required> </textarea>
+                </div>
+                <button type="submit" asp-controller="Products" asp-action="SendCustomerMessage" class="btn btn-primary btn-lg rounded-pill fa fa-paper-plane">Submit</button>
+            </form>
+        </div>
+        <br />
+        <hr />
+        <div class="col-md-3 col-sm-12 col-lg-3 ">
+            <img src="~/Images/here.png" class="img-fluid" alt="Alternate Text" />
+        </div>
+    </div>
+</div>

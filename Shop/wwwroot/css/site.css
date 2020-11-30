@@ -1,16 +1,18 @@
 ﻿/*Footer*/
 
 body {
-    background: aqua;
-    background: -webkit-linear-gradient(to right, aqua, lemonchiffon);
-    background: linear-gradient(to right, aqua, #ffc371);
+    background: aliceblue;
+    background: -webkit-linear-gradient(to right, aliceblue, lemonchiffon);
+    background: linear-gradient(to right, aliceblue, #e5e5e5);
     min-height: 100vh;
 }
 
 #button-addon1 {
     color: #ffc371;
 }
-
+.Navbar {
+    background-color: coral;
+}
 i {
     color: #ffc371;
 }
@@ -105,8 +107,104 @@ body {
     
     text-decoration: solid;
 }
+/*displayed image*/
 .price {
     font-size: 120%;
     text-decoration: underline overline;
     text-decoration-style: solid;
+}
+.carousel .img-responsive {
+    width: 100%;
+}
+/*aniation bar */
+.move {
+    width: 100px;
+    height: 100px;
+    background-color: deeppink;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    opacity: 0.7;
+}
+.move:hover {
+    opacity: 1;
+    transform: scale3d(2, 2, 2);
+
+}
+
+    @keyframes example {
+        0% {
+        background-color: deeppink;
+        left: 0px;
+        top: 0px;
+    }
+
+    25% {
+        background-color: aqua;
+        left: 200px;
+        top: 0px;
+    }
+
+    50% {
+        background-color:  fuchsia;
+        left: 200px;
+        top: 200px;
+    }
+
+    75% {
+        background-color: yellow;
+        left: 0px;
+        top: 200px;
+    }
+
+    100% {
+        background-color: red;
+        left: 0px;
+        top: 0px;
+    }
+
+}
+/* Blink box */
+.blink {
+    transform: scale(0.9);
+}
+    .blink:hover {
+        transition: 500ms linear;
+        transform: scale(1.0);
+    }
+.buy:hover {
+    transform: rotate(2deg);
+}
+/* search btn*/
+.search {
+    opacity: 0.8;
+    background-color: burlywood;
+}
+.search:hover {
+    opacity: 1;
+    background-color: #ffc371;
+}
+#search {
+    transform: scale(0.8);
+}
+#search:hover {
+    transform: scale(1);
+}
+/* active_navigation*/
+.active_navigation {
+    background-color: white;
+}
+.active_navigation:hover {
+    background-color: gold;
+    transform: scale(1.1);
+}
+/* buy button*/
+#buyButton {
+    background-color: gold;
+    color: #0366d6;
+
+}
+/*image_buy*/
+.image_buy:hover {
+    transform: scale(1.1);
 }

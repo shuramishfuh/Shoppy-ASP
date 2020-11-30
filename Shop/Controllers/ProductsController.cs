@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Shop.Data;
 using Shop.Models;
 using Microsoft.AspNetCore.Hosting;
+using MimeKit;
+using MimeKit.Text;
 
 namespace Shop.Controllers
 {
@@ -28,12 +31,98 @@ namespace Shop.Controllers
         {
             return View(await _context.Products.ToListAsync());
         }
+       public async Task<IActionResult> SendCustomerMessage(CustumerMessage custumerMessage)
+       {
+           try
+           {
+               var smt = new Mysmtp();
+               var message = new MimeMessage();
+               message.From.Add(new MailboxAddress(smt.user, smt.email));
+               message.To.Add(new MailboxAddress(custumerMessage.Name, custumerMessage.Email));
+               message.Subject = custumerMessage.Subject;
+               message.Body = new TextPart(TextFormat.Html)
+               {
+                
+                   Text = "<p>"+"<b>"+"customer message From"+"<b/>"+"<p/>"+
+                       "<p>"+"contact:"+custumerMessage.Wnumber+"<p/>" +
+                          "<p>"+  custumerMessage.Message +"<p/>" 
+
+               };
+               using var client = new MailKit.Net.Smtp.SmtpClient();
+               await client.ConnectAsync(smt.SmtpServer, smt.Port, false);
+ 
+               //SMTP server authentication
+               await client.AuthenticateAsync(smt.email, smt.Password);
+ 
+               await client.SendAsync(message);
+ 
+               await client.DisconnectAsync(true);
+           }
+           catch (Exception )
+           {
+               return StatusCode(500, "Error occured");
+           }
+           return Ok(true);
+       }
+      
+       public async Task<IActionResult> SendProductOrder(Buyproduct buyproduct)
+       {
+           try
+           {
+               var smt = new Mysmtp();
+               var message = new MimeMessage();
+               message.From.Add(new MailboxAddress(smt.user, smt.email));
+               message.To.Add(new MailboxAddress(smt.OfficialName, smt.OfficialEmail));
+               message.Subject = "Product Order";
+               message.Body = new TextPart(TextFormat.Html)
+               {
+                
+                   Text = "<p>"+"New order from"+"<b>"+buyproduct.Name+"<b/>"+"<p/>"+
+                          "<p>"+"product:"+"<b>"+buyproduct.ProductName+"<b/>"+"<p/>"+
+                           "<p>"+"Quantity"+"<b>"+buyproduct.Quantity+"<b/>"+"<p/>"+
+                          "<p>"+"Address:"+buyproduct.Address+"<p/>" +
+                          "<p>"+"Contact:"+buyproduct.MobileNumber+"<p/>" +
+                          "<p>"+"City:"+buyproduct.City+"<p/>" +
+                          "<p>"+"CompanyName:"+buyproduct.CompanyName+"<p/>" +
+                          "<p>"+"SARID:"+buyproduct.SarId+"<p/>" 
+                           
+
+               };
+               using var client = new MailKit.Net.Smtp.SmtpClient();
+               await client.ConnectAsync(smt.SmtpServer, smt.Port, false);
+ 
+               //SMTP server authentication
+               await client.AuthenticateAsync(smt.email, smt.Password);
+ 
+               await client.SendAsync(message);
+ 
+               await client.DisconnectAsync(true);
+           }
+           catch (Exception )
+           {
+               return StatusCode(500, "Error occured");
+           }
+           return Ok(true);
+       }
+
+
+
+
+
 
         // Get: All  shop page
-        public async Task<IActionResult> Shop()
+        public async Task<IActionResult> Shop(string name)
         {
+            if (string.IsNullOrEmpty(name))
+            {
+                return View(await _context.Products.ToListAsync());
+            }
 
-            return View(await _context.Products.ToListAsync());
+            var prod = _context.Products.Where(
+                p => p.Name.ToLower().Contains(name.ToLower())
+                     || p.BriefDescription.ToLower().Contains(name.ToLower())
+                     || p.FullDescription.ToLower().Contains(name.ToLower()));
+            return !prod.Any() ? View(await _context.Products.ToListAsync()) : View(await prod.ToListAsync());
         }
          // buy product
         public async Task<IActionResult> Buy(int? id)

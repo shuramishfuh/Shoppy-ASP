@@ -19,8 +19,11 @@ namespace Shop.Controllers
         {
             return View();
         }
-        [Authorize]
-       public IActionResult Privacy()
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+       public IActionResult Policy()
         {
             return View();
         }
