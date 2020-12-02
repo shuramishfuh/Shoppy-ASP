@@ -125,11 +125,11 @@ body {
     animation-duration: 4s;
     animation-iteration-count: infinite;
     opacity: 0.7;
-    transform: scale3d(2, 2, 2);
+    transform: scale3d(1, 1, 1);
 }
 .move:hover {
     opacity: 1;
-    transform: scale3d(1, 1, 1);
+    transform: scale3d(2, 2, 2);
 
 }
 
