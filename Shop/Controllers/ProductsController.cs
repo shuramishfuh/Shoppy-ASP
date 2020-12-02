@@ -25,6 +25,25 @@ namespace Shop.Controllers
             _env = env;
         }
 
+        // contact sent confirmation 
+        public async Task<IActionResult> ContactUsConfirmation()
+        {
+            return View();
+        } 
+        public async Task<IActionResult> ContactUsNotConfirmation()
+        {
+            return View();
+        }
+// order sent confirmation 
+        public async Task<IActionResult> OrderNotSentConfirmation()
+        {
+            return View();
+        } 
+        public async Task<IActionResult> OrderSentConfirmation()
+        {
+            return View();
+        }
+
         // GET: Products
         [Authorize]
         public async Task<IActionResult> Index()
@@ -43,10 +62,13 @@ namespace Shop.Controllers
                message.Body = new TextPart(TextFormat.Html)
                {
                 
-                   Text = "<p>"+"<b>"+"customer message From"+"<b/>"+"<p/>"+
-                       "<p>"+"contact:"+custumerMessage.Wnumber+"<p/>" +
-                          "<p>"+  custumerMessage.Message +"<p/>" 
-
+                   Text = "<p>"+"<b>"+"customer Contact "+"<b/>"+"<p/>"+
+                       "<p>"+"Name:  "+custumerMessage.Name+"<p/>" +
+                          
+                       "<p>"+"<b>"+"Contact:  "+"<b/>"+custumerMessage.Wnumber +"<p/>"+
+                       "<p>"+"<b>"+"Email:  "+"<b/>"+custumerMessage.Email +"<p/>"+
+                       "<p><b>Message:<b/><p/>"+
+                       "<p>"+custumerMessage.Message +"<p/>" 
                };
                using var client = new MailKit.Net.Smtp.SmtpClient();
                await client.ConnectAsync(smt.SmtpServer, smt.Port, false);
@@ -60,9 +82,9 @@ namespace Shop.Controllers
            }
            catch (Exception )
            {
-               return StatusCode(500, "Error occured");
+               return RedirectToAction("ContactUsConfirmation", "Products");
            }
-           return Ok(true);
+           return RedirectToAction("ContactUsConfirmation", "Products");
        }
       
        public async Task<IActionResult> SendProductOrder(Buyproduct buyproduct)
@@ -77,14 +99,14 @@ namespace Shop.Controllers
                message.Body = new TextPart(TextFormat.Html)
                {
                 
-                   Text = "<p>"+"New order from"+"<b>"+buyproduct.Name+"<b/>"+"<p/>"+
-                          "<p>"+"product:"+"<b>"+buyproduct.ProductName+"<b/>"+"<p/>"+
-                           "<p>"+"Quantity"+"<b>"+buyproduct.Quantity+"<b/>"+"<p/>"+
-                          "<p>"+"Address:"+buyproduct.Address+"<p/>" +
-                          "<p>"+"Contact:"+buyproduct.MobileNumber+"<p/>" +
-                          "<p>"+"City:"+buyproduct.City+"<p/>" +
-                          "<p>"+"CompanyName:"+buyproduct.CompanyName+"<p/>" +
-                          "<p>"+"SARID:"+buyproduct.SarId+"<p/>" 
+                   Text = "<p>"+"<b>New order from:<b/>  "+"<b>"+buyproduct.Name+"<b/>"+"<p/>"+
+                          "<p>"+"product:  "+"<b>"+buyproduct.ProductName+"<b/>"+"<p/>"+
+                           "<p>"+"Quantity:  "+"<b>"+buyproduct.Quantity+"<b/>"+"<p/>"+
+                          "<p>"+"Contact:  "+buyproduct.MobileNumber+"<p/>" +
+                          "<p>"+"Address: "+buyproduct.Address+"<p/>" +
+                          "<p>"+"City: "+buyproduct.City+"<p/>" +
+                          "<p>"+"CompanyName:  "+buyproduct.CompanyName+"<p/>" +
+                          "<p>"+"SARID:  "+buyproduct.SarId+"<p/>" 
                            
 
                };
@@ -100,9 +122,10 @@ namespace Shop.Controllers
            }
            catch (Exception )
            {
-               return StatusCode(500, "Error occured");
+             
+               return RedirectToAction("OrderNotSentConfirmation", "Products");
            }
-           return Ok(true);
+           return RedirectToAction("OrderSentConfirmation", "Products");
        }
 
 
