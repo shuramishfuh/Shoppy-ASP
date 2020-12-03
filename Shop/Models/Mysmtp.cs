@@ -9,8 +9,8 @@
         public string Type = "user";
         public string SmtpServer = "smtp.gmail.com";
        // public string OfficialEmail = "Classicdeals.biz@gmail.com";
-        public string OfficialEmail = "agamatimtim@gmail.com";
-        public string OfficialName = "Official";
+        public string OfficialEmail = "Classicdeals.biz@gmail.com";
+        public string OfficialName = "Classicdeals";
     }
     //structure
     //var mailMessage = new MimeMessage();
